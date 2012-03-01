@@ -1,0 +1,8 @@
+source :rubygems
+
+gem 'sqlite3'
+gem 'rails', '~>2'
+gem 'rspec', '~>1'
+gem 'rspec-rails', '~>1'
+gem 'ruby-debug'
+gem 'rspec_candy', :path => '../..'

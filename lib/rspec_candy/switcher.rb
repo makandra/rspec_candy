@@ -1,5 +1,6 @@
 module RSpecCandy
   module Switcher
+    extend self
 
     def rspec_version
       if defined?(RSpec)
