@@ -15,7 +15,9 @@ require 'rspec_candy'
 silence_warnings {RAILS_ENV = ENV['RAILS_ENV']}
 
 # Run the migrations
+print "\033[30m" # dark gray text
 ActiveRecord::Migrator.migrate("#{Rails.root}/db/migrate")
+print "\033[0m"
 
 RSpec.configure do |config|
   config.use_transactional_fixtures = true

@@ -7,10 +7,8 @@ task :default => :all_specs
 desc "Run all specs"
 task :all_specs do
   Dir['spec/**/Rakefile'].each do |rakefile|
-    directory_name = File.dirname(rakefile)
-    sh <<-CMD
-      cd #{directory_name} 
-      bundle exec rake
-    CMD
+    directory = File.dirname(rakefile)
+    puts '', "\033[44m#{directory}\033[0m", ''
+    system("cd #{directory} && bundle exec rake")
   end
 end

@@ -6,5 +6,6 @@ task :default => :spec
 
 desc "Run all specs for a specific rails version"
 RSpec::Core::RakeTask.new(:spec) do |t|
+  t.verbose = false
   t.pattern = ['**/*_spec.rb', '../shared/**/*_spec.rb']
 end
