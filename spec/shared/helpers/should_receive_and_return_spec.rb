@@ -23,11 +23,6 @@ describe RSpecCandy::Helpers::StubExisting do
         example
       end
 
-      it 'should return itself' do
-        object = 'object'
-        object.should_receive_and_return({}).should == object
-      end
-
     end
 
   end
