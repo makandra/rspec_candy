@@ -9,6 +9,7 @@ task :all_specs do
   Dir['spec/**/Rakefile'].sort.each do |rakefile|
     directory = File.dirname(rakefile)
     puts '', "\033[44m#{directory}\033[0m", ''
-    system("cd #{directory} && bundle exec rake")
+    env = "SPEC=../../#{ENV['SPEC']} " if ENV['SPEC']
+    system("cd #{directory} && #{env} bundle exec rake")
   end
 end
