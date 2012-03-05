@@ -11,8 +11,8 @@ require 'rspec/rails'
 # Load dependencies
 require 'rspec_candy'
 
-# Undo changes to RAILS_ENV
-silence_warnings {RAILS_ENV = ENV['RAILS_ENV']}
+# Require support code
+Dir["../shared/support/**/*.rb"].each {|f| require f}
 
 # Run the migrations
 print "\033[30m" # dark gray text

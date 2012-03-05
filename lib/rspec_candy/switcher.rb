@@ -20,5 +20,17 @@ module RSpecCandy
       end
     end
 
+    def rspec_root
+      (defined?(RSpec) ? RSpec : Spec)
+    end
+
+    def rspec_matcher_registry
+      rspec_root.const_get(:Matchers)
+    end
+
+    def define_matcher(*args, &block)
+      rspec_matcher_registry.define(*args, &block)
+    end
+
   end
 end
