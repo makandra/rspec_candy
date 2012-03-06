@@ -6,27 +6,32 @@ module RSpecCandy
         setup_expectation_chain(parts)
       end
 
+      def should_not_receive_chain(*parts)
+        setup_expectation_chain(parts, :negate => true)
+      end
+
       private
 
-      def setup_expectation_chain(parts)
+      def setup_expectation_chain(parts, options = {})
         obj = self
         for part in parts
           if part == parts.last
-            obj = add_expectation_chain_link(obj, part)
+            expectation = options[:negate] ? :should_not_receive : :should_receive
+            obj = add_expectation_chain_link(obj, expectation, part)
           else
-            next_obj = Spec::Mocks::Mock.new('chain link')
-            add_expectation_chain_link(obj, part).at_least(:once).and_return(next_obj)
+            next_obj = Switcher.new_mock('chain link')
+            add_expectation_chain_link(obj, :stub, part).and_return(next_obj)
             obj = next_obj
           end
         end
         obj
       end
 
-      def add_expectation_chain_link(obj, part)
+      def add_expectation_chain_link(obj, expectation, part)
         if part.is_a?(Array)
-          obj.should_receive(part.first).with(*part[1..-1])
+          obj.send(expectation, part.first).with(*part[1..-1])
         else
-          obj.should_receive(part)
+          obj.send(expectation, part)
         end
       end
 

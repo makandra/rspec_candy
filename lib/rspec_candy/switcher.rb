@@ -20,6 +20,10 @@ module RSpecCandy
       end
     end
 
+    def new_mock(*args)
+      rspec_root.const_get(:Mocks).const_get(:Mock).new(args)
+    end
+
     def rspec_root
       (defined?(RSpec) ? RSpec : Spec)
     end

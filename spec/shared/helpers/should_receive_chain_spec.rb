@@ -6,7 +6,7 @@ describe RSpecCandy::Helpers::ShouldReceiveChain do
 
     describe '#should_receive_chain' do
 
-      it "should pass when the chain was traversed" do
+      it "should pass when the chain was traversed completely" do
         (<<-example).should pass_as_example
           object = "object"
           object.should_receive_chain(:first_message, :second_message)
@@ -61,6 +61,34 @@ describe RSpecCandy::Helpers::ShouldReceiveChain do
           object.should_receive_chain(:first_message, :second_message)
           object.first_message
           object.first_message.second_message
+        example
+      end
+
+    end
+
+
+    describe '#should_not_receive_chain' do
+
+      it "should pass when the chain was traversed completely" do
+        (<<-example).should fail_as_example
+          object = "object"
+          object.should_receive_chain(:first_message, :second_message)
+          object.first_message.second_message
+        example
+      end
+
+      it "should pass when the chain wasn't traversed at all" do
+        (<<-example).should fail_as_example
+          object = "object"
+          object.should_not_receive_chain(:first_message, :second_message)
+        example
+      end
+
+      it "should pass when the chain was only traversed partially" do
+        (<<-example).should pass_as_example
+          object = "object"
+          object.should_receive_chain(:first_message, :second_message)
+          object.first_message
         example
       end
 
