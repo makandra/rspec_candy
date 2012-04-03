@@ -13,6 +13,7 @@ module RSpecCandy
 
       def new_and_store(*args)
         warn 'new_and_store is deprecated. Use create_without_callbacks instead.'
+        create_without_callbacks(*args)
       end
 
       ActiveRecord::Base.send(:extend, self)

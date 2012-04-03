@@ -17,24 +17,20 @@ class RSpecRemote
 end
 
 
-module RSpecCandy
+RSpecCandy::Switcher.define_matcher :pass_as_example do
 
-  Switcher.define_matcher :pass_as_example do
-
-    match do |example|
-      rspec_out = RSpecRemote.run_example(example)
-      rspec_out.include?('0 failures')
-    end
-
+  match do |example|
+    rspec_out = RSpecRemote.run_example(example)
+    rspec_out.include?('0 failures')
   end
 
-  Switcher.define_matcher :fail_as_example do
+end
 
-    match do |example|
-      rspec_out = RSpecRemote.run_example(example)
-      rspec_out.include?('1 failure')
-    end
+RSpecCandy::Switcher.define_matcher :fail_as_example do
 
+  match do |example|
+    rspec_out = RSpecRemote.run_example(example)
+    rspec_out.include?('1 failure')
   end
 
 end
