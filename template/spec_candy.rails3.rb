@@ -1,69 +1,69 @@
 Object.class_eval do
 
-  def should_receive_chain(*parts)
-    setup_expectation_chain(parts)
-  end
-
-  def should_not_receive_chain(*parts)
-    setup_expectation_chain(parts, :negate => true)
-  end
-
-  def self.new_with_stubs(attrs)
-    new.tap { |obj| obj.stub(attrs) }
-  end
-
-  def should_receive_and_return(methods_and_values)
-    methods_and_values.each do |method, value|
-      should_receive(method).and_return(value)
-    end
-  end
-
-  def self.new_and_store(options = {})
-    new.tap do |record|
-      record.send(:attributes=, options, false)
-      record.save!(:validate => false)
-    end
-  end
-
-  def stub_existing(attrs)
-    attrs.each do |method, value|
-      if respond_to?(method, true)
-        stub(method => value)
-      else
-        raise "Attempted to stub non-existing method ##{method} on a #{self.class.name}"
-      end
-    end
-  end
-  
-  def should_receive_and_execute(method, negate = false)
-    method_base = method.to_s.gsub(/([\?\!\=\[\]]+)$/, '')
-    method_suffix = $1
-
-    method_called = "_#{method_base}_called#{method_suffix}"
-    method_with_spy = "#{method_base}_with_spy#{method_suffix}"
-    method_without_spy = "#{method_base}_without_spy#{method_suffix}"
-
-    prototype = respond_to?(:singleton_class) ? singleton_class : metaclass
-    prototype.class_eval do
-
-      unless method_defined?(method_with_spy)
-
-        define_method method_called do
-        end
-
-        define_method method_with_spy do |*args, &block|
-          send(method_called, *args)
-          send(method_without_spy, *args, &block)
-        end
-        alias_method_chain method, :spy
-      end
-
-    end
-
-    expectation = negate ? :should_not_receive : :should_receive
-    send(expectation, method_called)
-  end
-
+#  def should_receive_chain(*parts)
+#    setup_expectation_chain(parts)
+#  end
+#
+#  def should_not_receive_chain(*parts)
+#    setup_expectation_chain(parts, :negate => true)
+#  end
+#
+#  def self.new_with_stubs(attrs)
+#    new.tap { |obj| obj.stub(attrs) }
+#  end
+#
+#  def should_receive_and_return(methods_and_values)
+#    methods_and_values.each do |method, value|
+#      should_receive(method).and_return(value)
+#    end
+#  end
+#
+#  def self.new_and_store(options = {})
+#    new.tap do |record|
+#      record.send(:attributes=, options, false)
+#      record.save!(:validate => false)
+#    end
+#  end
+#
+#  def stub_existing(attrs)
+#    attrs.each do |method, value|
+#      if respond_to?(method, true)
+#        stub(method => value)
+#      else
+#        raise "Attempted to stub non-existing method ##{method} on a #{self.class.name}"
+#      end
+#    end
+#  end
+#
+#  def should_receive_and_execute(method, negate = false)
+#    method_base = method.to_s.gsub(/([\?\!\=\[\]]+)$/, '')
+#    method_suffix = $1
+#
+#    method_called = "_#{method_base}_called#{method_suffix}"
+#    method_with_spy = "#{method_base}_with_spy#{method_suffix}"
+#    method_without_spy = "#{method_base}_without_spy#{method_suffix}"
+#
+#    prototype = respond_to?(:singleton_class) ? singleton_class : metaclass
+#    prototype.class_eval do
+#
+#      unless method_defined?(method_with_spy)
+#
+#        define_method method_called do
+#        end
+#
+#        define_method method_with_spy do |*args, &block|
+#          send(method_called, *args)
+#          send(method_without_spy, *args, &block)
+#        end
+#        alias_method_chain method, :spy
+#      end
+#
+#    end
+#
+#    expectation = negate ? :should_not_receive : :should_receive
+#    send(expectation, method_called)
+#  end
+#
   private
 
   def setup_expectation_chain(parts, options = {})
@@ -167,7 +167,7 @@ end
 
 ActiveRecord::Base.class_eval do
 
-  # Prevents the databse from being touched, but still runs all validations.
+  # Prevents the database from being touched, but still runs all validations.
   def keep_invalid!
     errors.stub :empty? => false
   end
