@@ -20,6 +20,10 @@ module RSpecCandy
       end
     end
 
+    def rails_loaded?
+      defined?(Rails)
+    end
+
     def new_mock(*args)
       rspec_root.const_get(:Mocks).const_get(:Mock).new(*args)
     end

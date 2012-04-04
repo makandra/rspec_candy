@@ -9,3 +9,6 @@ require 'rspec_candy/helpers/should_receive_chain'
 require 'rspec_candy/helpers/stub_any_instance'
 require 'rspec_candy/helpers/stub_existing'
 
+if RSpecCandy::Switcher.rails_loaded?
+  require 'rspec_candy/helpers/rails/prevent_storage'
+end
