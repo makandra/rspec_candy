@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RSpecCandy::Helpers::ItShouldRunCallbacks do
+describe RSpecCandy::Helpers::Rails::ItShouldRunCallbacks do
 
   it 'should work'
 

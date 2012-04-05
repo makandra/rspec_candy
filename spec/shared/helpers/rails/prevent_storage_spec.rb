@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RSpecCandy::Helpers::PreventStorage do
+describe RSpecCandy::Helpers::Rails::PreventStorage do
 
   it 'should work'
 

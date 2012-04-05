@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RSpecCandy::Helpers::DisposableCopySpec do
+describe RSpecCandy::Helpers::DisposableCopy do
 
   it 'should work'
 

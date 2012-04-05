@@ -1,6 +1,6 @@
 require 'spec_helper'
 
-describe RSpecCandy::Helpers::CreateWithoutCallbacks do
+describe RSpecCandy::Helpers::Rails::CreateWithoutCallbacks do
 
   describe ActiveRecord::Base do
 
