@@ -29,8 +29,9 @@ describe RSpecCandy::Helpers::Rails::CreateWithoutCallbacks do
     describe '.new_and_store' do
 
       it 'should print a deprecation warning urging to use .create_without_callbacks instead' do
-        Model.should_receive(:warn).with(/Use create_without_callbacks instead/)
-        Model.new_and_store(:string_field => 'foo')
+        Model.should_receive(:warn).with(/Use create_without_callbacks instead/i)
+        Model.should_receive(:create_without_callbacks).with('args')
+        Model.new_and_store('args')
       end
 
     end
