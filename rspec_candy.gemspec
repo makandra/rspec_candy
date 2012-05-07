@@ -4,7 +4,7 @@ require "rspec_candy/version"
 Gem::Specification.new do |s|
   s.name = 'rspec_candy'
   s.version = RSpecCandy::VERSION
-  s.authors = ["Henning Koch"]
+  s.authors = ["Henning Koch", "Tobias Kraze"]
   s.email = 'henning.koch@makandra.de'
   s.homepage = 'https://github.com/makandra/rspec_candy'
   s.summary = 'RSpec helpers and matchers we use in our daily work at makandra. '

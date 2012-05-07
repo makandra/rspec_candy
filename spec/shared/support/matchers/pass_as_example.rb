@@ -1,18 +1,12 @@
 class RSpecRemote
   def self.run_example(example)
-    temp_path = nil
-    Tempfile.open(['example', '_spec.rb']) do |io|
-      io.write(<<-example)
-        require 'spec_helper';
-        describe 'context' do
-          it 'should pass' do
-            #{example}
-          end
+    run_describe_block(<<-describe_block)
+      describe 'context' do
+        it 'should pass' do
+          #{example}
         end
-      example
-      temp_path = io.path
-    end
-    `rake SPEC=#{temp_path} 2>&1`
+      end
+    describe_block
   end
 end
 
