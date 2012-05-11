@@ -17,19 +17,19 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
 
 ### Extensions to **Object**
 
-:should_receive_and_execute
+**should_receive_and_execute**
 
   Like "should_receive", but also executes the method.
 
 
-:should_receive_and_return
+**should_receive_and_return**
 
   Expects multiple returns at once:
     
       dog.should_receive_and_return(:bark => "Woof", :fetch => "stick")
 
 
-:should_receive_chain
+**should_receive_chain**
 
   Expect a chain of method calls:
 
@@ -41,14 +41,14 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
      dog.should_receive_chain([:bark, 'loudly'], :upcase).and_return("WOOF!!!")
         
  
-:stub_existing
+**stub_existing**
   
   Like stub, put complains if the method did not exist in the first place.
 
 
 ### Extensions to **Class**
 
-:disposable_copy
+**disposable_copy**
 
   Like dup for classes. This will temporarily add a method to a class:
 
@@ -59,20 +59,20 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
       object = copy.new
 
 
-:new_with_stubs 
+**new_with_stubs**
   
   Instantiates and stubs in one call:
 
       Model.new_with_stubs(:to_param => '1')
 
-:stub_any_instance
+**stub_any_instance**
 
   Backport for `any_instance.stub` to RSpec1.
 
  
 ### Extensions to **example groups**
 
-:it_should_act_like
+**it_should_act_like**
 
   Extension to 'it_should_behave_like`, not necessary for RSpec2.
 
@@ -92,7 +92,7 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
   Blocks are passed as a let named "block".
 
 
-:it_should_run_callbacks
+**it_should_run_callbacks**
 
    Only on Rails.
 
@@ -109,7 +109,8 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
          it_should_run_callbacks :notify_this, :notify_that
        end
 
-:it_should_run_callbacks_in_order
+**it_should_run_callbacks_in_order**
+
   Like `it_should_run_callbacks`, but also checks the correct order.
 
   
@@ -117,7 +118,7 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
 
 ### Extensions to **ActiveRecord::Base**
 
-:create_without_callbacks
+**create_without_callbacks**
   
   Only on Rails.
 
