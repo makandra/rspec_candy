@@ -6,3 +6,8 @@ gem 'rspec', '~>2'
 gem 'rspec-rails', '~>2'
 gem 'ruby-debug'
 gem 'rspec_candy', :path => '../..'
+
+
+group :state_machine do
+  gem 'state_machine'
+end

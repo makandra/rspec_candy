@@ -1,0 +1,1 @@
+../../../../shared/app_root/config/initializers/state_machine.rb
