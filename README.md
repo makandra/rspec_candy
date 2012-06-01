@@ -26,19 +26,19 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
 
   Expects multiple returns at once:
     
-      dog.should_receive_and_return(:bark => "Woof", :fetch => "stick")
+    dog.should_receive_and_return(:bark => "Woof", :fetch => "stick")
 
 
 **should_receive_chain**
 
   Expect a chain of method calls:
 
-     dog.should_receive_chain(:bark, :upcase).and_return("WOOF")
+    dog.should_receive_chain(:bark, :upcase).and_return("WOOF")
 
 
   You can also expect arguments, like:
  
-     dog.should_receive_chain([:bark, 'loudly'], :upcase).and_return("WOOF!!!")
+    dog.should_receive_chain([:bark, 'loudly'], :upcase).and_return("WOOF!!!")
         
  
 **stub_existing**
@@ -52,18 +52,18 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
 
   Like dup for classes. This will temporarily add a method to a class:
 
-      copy = Model.disposable_copy.class_eval do
-        def foo; end
-      end
+    copy = Model.disposable_copy.class_eval do
+      def foo; end
+    end
 
-      object = copy.new
+    object = copy.new
 
 
 **new_with_stubs**
   
   Instantiates and stubs in one call:
 
-      Model.new_with_stubs(:to_param => '1')
+    Model.new_with_stubs(:to_param => '1')
 
 **stub_any_instance**
 
@@ -78,15 +78,15 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
 
   Allows parametrizing shared examples, exposes parameters as lets:
 
-      shared_examples_for "an animal" do
-        it 'should make noises' do
-          subject.say.should == expected_noise
-        end
+    shared_examples_for "an animal" do
+      it 'should make noises' do
+        subject.say.should == expected_noise
       end
+    end
 
-      describe Dog do
-        it_should_act_like 'an animal', :expected_noise => 'Woof!'
-      end
+    describe Dog do
+      it_should_act_like 'an animal', :expected_noise => 'Woof!'
+    end
 
 
   Blocks are passed as a let named "block".
@@ -98,16 +98,16 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
 
    Check if callbacks are run. Note the name of the describe block is significant:
 
-       describe Model, '#after_save' do
-         it_should_run_callbacks :notify_this, :notify_that
-       end
+     describe Model, '#after_save' do
+       it_should_run_callbacks :notify_this, :notify_that
+     end
   
    If you use the state_machine gem, you can also spec callbacks for state_machine transitions:
 
 
-       describe Model, '#my_event from :my_state1 to :my_state" do
-         it_should_run_callbacks :notify_this, :notify_that
-       end
+    describe Model, '#my_event from :my_state1 to :my_state" do
+      it_should_run_callbacks :notify_this, :notify_that
+    end
 
 **it_should_run_callbacks_in_order**
 
@@ -127,7 +127,6 @@ Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requ
 
 
 ##Changes from previous versions:
--------------------------------
 
 - `new_and_store` has been renamed `create_without_callbacks`
 - `keep_invalid!` has been renamed to `prevent_storage`
