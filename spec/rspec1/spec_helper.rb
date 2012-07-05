@@ -8,7 +8,7 @@ require "#{File.dirname(__FILE__)}/app_root/config/environment"
 require 'spec/rails'
 
 # Load dependencies
-require 'rspec_candy'
+require 'rspec_candy/helpers'
 
 # Require support code
 Dir["../shared/support/**/*.rb"].each {|f| require f}

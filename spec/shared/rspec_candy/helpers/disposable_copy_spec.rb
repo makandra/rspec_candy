@@ -38,6 +38,14 @@ describe RSpecCandy::Helpers::DisposableCopy do
         Model.new.should_not respond_to(:foo)
       end
 
+      it 'should evaluate the block after the copy has been renamed to the original class name' do
+        spy = mock('spy')
+        spy.should_receive(:observe_name).with('Model')
+        Model.disposable_copy do
+          spy.observe_name(name)
+        end
+      end
+
     end
 
   end
