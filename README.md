@@ -37,7 +37,7 @@ If you only care about the matchers or helpers you can also more specifically re
 
     Time.parse('2012-12-01 14:00:00.5').should == Time.parse('2012-12-01 14:00')
 
-  Note that two times in a different time zones will still be considered different.q
+  Note that two times in a different time zones will still be considered different.
 
 **include_hash**
 
