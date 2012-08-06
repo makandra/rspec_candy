@@ -17,6 +17,14 @@ Now, in your `spec_helper.rb`, add this after your RSpec requires:
 
 ##Matchers provided
 
+**be_same_number_as**
+
+  Tests if the given number is the same as the receiving number, regardless of whether you're comparing `Fixnums` (integers), `Floats` and `BigDecimals`.
+
+  100.should be_same_number_as(100.0)
+  50.4.should be_same_number_as(BigDecimal('50.4'))
+
+
 **include_hash**
 
   Matches if the given hash is included in the receiving hash:
