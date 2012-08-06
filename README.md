@@ -1,15 +1,29 @@
 #rspec_candy
 
 
-A collection of nifty helpers for your rspec suite.
+A collection of nifty helpers and matchers for your RSpec suite.
 
 Will work for RSpec1 and Rails 2, or RSpec2 and Rails 3, or no Rails at all..
 
 
-##Usage
+##Installation
 
 Add `rspec_candy` to your Gemfile.
-Add `require 'rspec_candy/helpers'` to your spec_helper.rb, after the rspec requires.
+
+Now, in your `spec_helper.rb`, add this after your RSpec requires:
+
+    require 'rspec_candy/all'
+
+
+##Matchers provided
+
+**include_hash**
+
+  Matches if the given hash is included in the receiving hash:
+
+   { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'a') # passes
+   { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'b') # fails
+   { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'a', :baz => 'c') # fails
 
 
 ##Helpers provided

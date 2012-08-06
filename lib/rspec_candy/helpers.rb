@@ -1,5 +1,4 @@
-require 'rspec_candy/version'
-require 'rspec_candy/switcher'
+require 'rspec_candy/base'
 require 'rspec_candy/helpers/disposable_copy'
 require 'rspec_candy/helpers/it_should_act_like'
 require 'rspec_candy/helpers/new_with_stubs'

@@ -1,2 +1,2 @@
-# empty, so Bundler does not require anything
-# put a "require rspec_candy/helpers" into your spec_helper
+# empty so bundler doesn't require a thing
+
