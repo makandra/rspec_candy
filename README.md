@@ -21,9 +21,9 @@ Now, in your `spec_helper.rb`, add this after your RSpec requires:
 
   Matches if the given hash is included in the receiving hash:
 
-   { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'a') # passes
-   { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'b') # fails
-   { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'a', :baz => 'c') # fails
+    { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'a') # passes
+    { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'b') # fails
+    { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'a', :baz => 'c') # fails
 
 
 ##Helpers provided
