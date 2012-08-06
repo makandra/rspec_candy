@@ -3,7 +3,7 @@
 
 A collection of nifty helpers and matchers for your RSpec suite.
 
-Will work for RSpec1 and Rails 2, or RSpec2 and Rails 3, or no Rails at all..
+Will work for RSpec1 and Rails 2, or RSpec2 and Rails 3, or no Rails at all.
 
 
 ##Installation
@@ -14,16 +14,30 @@ Now, in your `spec_helper.rb`, add this after your RSpec requires:
 
     require 'rspec_candy/all'
 
+If you only care about the matchers or helpers you can also more specifically require:
+
+    require 'rspec_candy/matchers'
+    require 'rspec_candy/helpers'
+
 
 ##Matchers provided
 
 **be_same_number_as**
 
-  Tests if the given number is the same as the receiving number, regardless of whether you're comparing `Fixnums` (integers), `Floats` and `BigDecimals`.
+  Tests if the given number is the "same" as the receiving number, regardless of whether you're comparing `Fixnums` (integers), `Floats` and `BigDecimals`:
 
-  100.should be_same_number_as(100.0)
-  50.4.should be_same_number_as(BigDecimal('50.4'))
+    100.should be_same_number_as(100.0)
+    50.4.should be_same_number_as(BigDecimal('50.4'))
 
+  Note that "same" means "same for your purposes". Internally the matcher compares normalized results of `#to_s`.
+
+**be_same_second_as**
+
+  Tests if the given `Time` or `DateTime` is the same as the receiving `Time` or `DateTime`, [ignoring sub-second differences](https://makandracards.com/makandra/1057-why-two-ruby-time-objects-are-not-equal-although-they-appear-to-be):
+
+    Time.parse('2012-12-01 14:00:00.5').should == Time.parse('2012-12-01 14:00')
+
+  Note that two times in a different time zones will still be considered different.q
 
 **include_hash**
 
