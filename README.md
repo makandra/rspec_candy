@@ -88,7 +88,7 @@ If you only care about the matchers or helpers you can also more specifically re
 
   Like dup for classes. This will temporarily add a method to a class:
 
-    copy = Model.disposable_copy.class_eval do
+    copy = Model.disposable_copy do
       def foo; end
     end
 
