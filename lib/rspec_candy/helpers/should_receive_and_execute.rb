@@ -15,7 +15,7 @@ module RSpecCandy
 
           unless method_defined?(method_with_spy)
 
-            define_method method_called do
+            define_method method_called do |*args|
             end
 
             define_method method_with_spy do |*args, &block|
