@@ -1,9 +1,11 @@
 $: << File.join(File.dirname(__FILE__), "/../lib" )
+$: << File.dirname(__FILE__)
 
 ENV['RAILS_ENV'] = 'test'
+ENV['RAILS_ROOT'] = 'app_root'
 
 # Load the Rails environment and testing framework
-require "#{File.dirname(__FILE__)}/app_root/config/environment"
+require "#{File.dirname(__FILE__)}/../app_root/config/environment"
 require 'spec/rails'
 
 # Load dependencies
