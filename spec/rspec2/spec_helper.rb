@@ -1,8 +1,6 @@
 $: << File.join(File.dirname(__FILE__), "/../lib" )
 
-# Set the default environment to sqlite3's in_memory database
-ENV['RAILS_ENV'] ||= 'in_memory'
-ENV['RAILS_ROOT'] = 'app_root'
+ENV['RAILS_ENV'] = 'test'
 
 # Load the Rails environment and testing framework
 require "#{File.dirname(__FILE__)}/app_root/config/environment"
