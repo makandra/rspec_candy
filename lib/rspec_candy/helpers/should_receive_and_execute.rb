@@ -12,10 +12,10 @@ module RSpecCandy
         method_with_spy = "#{method_base}_with_spy#{method_suffix}"
         method_without_spy = "#{method_base}_without_spy#{method_suffix}"
 
-        method_defined_directly = (private_methods + protected_methods + public_methods).include?(method) # not method_missing
-
         prototype = respond_to?(:singleton_class) ? singleton_class : metaclass
         prototype.class_eval do
+
+          method_defined_directly = method_defined?(method) || private_method_defined?(method) # check that a method is not "defined" by responding to method_missing
 
           define_method method_called do |*args|
           end
