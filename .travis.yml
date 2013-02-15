@@ -1,0 +1,12 @@
+language: ruby
+rvm:
+  - "1.8.7"
+  - "1.9.3"
+  - ree
+script: rake all:bundle all:spec
+notifications:
+  email:
+    - fail@makandra.de
+branches:
+  only:
+    - master

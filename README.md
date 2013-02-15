@@ -1,5 +1,5 @@
-#rspec_candy
-
+rspec_candy [![Build Status](https://secure.travis-ci.org/makandra/rspec_candy.png?branch=master)](https://travis-ci.org/makandra/rspec_candy)
+==========================================
 
 A collection of nifty helpers and matchers for your RSpec suite.
 
