@@ -25,6 +25,29 @@ describe RSpecCandy::Helpers::ShouldReceiveAndExecute do
         object.size # make the example pass
       end
 
+      it "should not overwrite the implementation of a class method defined through an object's singleton class" do
+        object = Object.new
+        def object.foo
+          'foo'
+        end
+        object.should_receive_and_execute(:foo)
+        object.foo.should == 'foo'
+      end
+
+      it 'should not fail for a class that responds to messages using #method_missing' do
+        klass = Class.new do
+          def respond_to?(*args)
+            true
+          end
+          def method_missing(symbol, *args, &block)
+            'foo'
+          end
+        end
+        object = klass.new
+        object.should_receive_and_execute(:foo)
+        object.foo.should == 'foo'
+      end
+
     end
 
   end
