@@ -8,7 +8,11 @@ module RSpecCandy
           plain_model = Class.new(ActiveRecord::Base) do
             self.table_name = table_name
           end
-          plain_record = plain_model.create!(*args)
+          plain_record = plain_model.new(*args)
+          if plain_record.respond_to?(:type=)
+            plain_record.type = name
+          end
+          plain_record.save!
           find plain_record.id
         end
 

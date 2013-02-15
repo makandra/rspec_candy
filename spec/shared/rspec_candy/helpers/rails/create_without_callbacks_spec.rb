@@ -24,6 +24,16 @@ describe RSpecCandy::Helpers::Rails::CreateWithoutCallbacks do
         record.should_not be_new_record
       end
 
+      it 'should work with single table inheritance' do
+        child = StiChild.create_without_callbacks(:string_field => 'foo')
+        child.string_field.should == 'foo'
+        child.should be_a(StiChild)
+        child.id.should be_a(Fixnum)
+        child.type.should == 'StiChild'
+        child.should_not be_new_record
+        StiChild.all.should == [child]
+      end
+
     end
 
     describe '.new_and_store' do
