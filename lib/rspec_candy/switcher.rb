@@ -3,7 +3,7 @@ module RSpecCandy
     extend self
 
     def rspec_version
-      if defined?(RSpec)
+      if defined?(RSpec::Core)
         :rspec2
       elsif defined?(Spec)
         :rspec1
