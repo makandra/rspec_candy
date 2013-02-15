@@ -1,5 +1,4 @@
 require 'rake'
-require 'spec/rake/spectask'
 
 require "bundler/gem_tasks"
 
