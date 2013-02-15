@@ -29,7 +29,11 @@ module RSpecCandy
     end
 
     def rspec_root
-      (defined?(RSpec) ? RSpec : Spec)
+      if rspec_version == :rspec1
+        Spec
+      else
+        RSpec
+      end
     end
 
     def rspec_matcher_registry
