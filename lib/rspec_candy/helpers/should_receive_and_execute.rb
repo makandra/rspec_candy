@@ -31,7 +31,7 @@ module RSpecCandy
           else
             define_method method do |*args, &block|
               send(method_called, *args)
-              super
+              super(*args, &block)
             end
           end
 
