@@ -154,7 +154,7 @@ If you only care about the matchers or helpers you can also more specifically re
 
 ### Extensions to **ActiveRecord::Base**
 
-**create_without_callbacks**
+**store_with_values**
   
   Only on Rails.
 
@@ -164,7 +164,8 @@ If you only care about the matchers or helpers you can also more specifically re
 
 ##Changes from previous versions:
 
-- `new_and_store` has been renamed `create_without_callbacks`
+- `new_and_store` has been renamed to `store_with_values`
+- `create_without_callbacks` has been renamed to `store_with_values`
 - `keep_invalid!` has been renamed to `prevent_storage`
 - `Object#should_not_receive_and_execute` has been removed (same as `Object#should_not_receive`)
 - `should_receive_all_with` (over-generic method name for a helper that is rarely useful)

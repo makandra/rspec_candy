@@ -16,4 +16,5 @@ Gem::Specification.new do |s|
   s.require_paths = ["lib"]
 
   s.add_dependency('rspec')
+  s.add_dependency('sneaky-save')
 end

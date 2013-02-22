@@ -2,6 +2,7 @@ source :rubygems
 
 gem 'sqlite3'
 gem 'rails', '~>3'
+gem 'has_defaults'
 gem 'rspec', '~>2'
 gem 'rspec-rails', '~>2'
 gem 'ruby-debug', :platforms => :ruby_18

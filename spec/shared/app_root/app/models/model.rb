@@ -4,6 +4,8 @@ class Model < ActiveRecord::Base
   after_save :after_save_callback1, :after_save_callback2
   before_save :before_save_callback1, :before_save_callback2
 
+  belongs_to :associated_model, :class_name => 'Model'
+
   if respond_to? :around_save
     around_save :around_save_callback1, :around_save_callback2
   end
