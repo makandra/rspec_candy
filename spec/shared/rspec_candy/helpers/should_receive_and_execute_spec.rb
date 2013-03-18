@@ -48,6 +48,14 @@ describe RSpecCandy::Helpers::ShouldReceiveAndExecute do
         object.foo.should == 'foo'
       end
 
+      it 'should work when setting multiple expectations on the same method' do
+        object = "16"
+        object.should_receive_and_execute(:to_i).with(10)
+        object.should_receive_and_execute(:to_i).with(8)
+        object.to_i(10).should == 16
+        object.to_i(8).should == 14
+      end
+
     end
 
   end

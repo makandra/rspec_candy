@@ -17,7 +17,9 @@ module RSpecCandy
 
           method_defined_directly = method_defined?(method) || private_method_defined?(method) # check that a method is not "defined" by responding to method_missing
 
-          define_method method_called do |*args|
+          unless method_defined?(method_called)
+            define_method method_called do |*args|
+            end
           end
 
           if method_defined_directly
