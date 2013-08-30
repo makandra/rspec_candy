@@ -95,6 +95,22 @@ describe RSpecCandy::Helpers::Rails::ItShouldRunCallbacks do
         describe_block
       end
 
+      it 'should also run state machine callbacks for a state machine with a custom name and pass if they are called if StateMachine is present' do
+        <<-describe_block.should pass_as_describe_block
+          describe StateMachineModel, '#event on :custom_state from :state1 to :state2' do
+            it_should_run_callbacks :custom_state_event_callback
+          end
+        describe_block
+      end
+
+      it 'should also run state machine callbacks for a state machine with a custom name and fail if they are not called if StateMachine is present' do
+        <<-describe_block.should fail_as_describe_block
+          describe StateMachineModel, '#event on :custom_state from :state1 to :state3' do
+            it_should_run_callbacks :custom_state_event_callback
+          end
+        describe_block
+      end
+
     end
 
 

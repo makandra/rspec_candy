@@ -88,11 +88,12 @@ module RSpecCandy
           end
 
           def run_state_machine_callbacks_from_prose(prose)
-            if parts = prose.match(/^(#\w+) from ([\:\w]+) to ([\:\w]+)$/)
+            if parts = prose.match(/^(#\w+) (?:on ([\:\w]+) )?from ([\:\w]+) to ([\:\w]+)$/)
               name = parts[1].sub(/^#/, '').to_sym
-              from = parts[2].sub(/^:/, '').to_sym
-              to = parts[3].sub(/^:/, '').to_sym
-              transition = StateMachine::Transition.new(subject, subject.class.state_machine, name, from, to)
+              machine_name = parts[2] ? parts[2].sub(/^:/, '').to_sym : :state
+              from = parts[3].sub(/^:/, '').to_sym
+              to = parts[4].sub(/^:/, '').to_sym
+              transition = StateMachine::Transition.new(subject, subject.class.state_machine(machine_name), name, from, to)
               transition.run_callbacks
             end
           end
