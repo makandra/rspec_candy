@@ -119,20 +119,6 @@ describe RSpecCandy::Helpers::StubAnyInstance do
         describe_block
       end
 
-      if RSpecCandy::Switcher.rspec_version == :rspec2 
-        it 'should print a deprecation warning' do
-          result = RSpecRemote.run_describe_block(<<-describe_block)
-            shared_examples "a lazy spec" do
-            end
-
-            describe 'spec' do
-              it_should_act_like "a lazy spec"
-            end
-          describe_block
-          result.should include('"it_should_act_like" is deprecated')
-        end
-      end
-
     end
 
   end

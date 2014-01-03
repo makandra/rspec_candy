@@ -11,10 +11,6 @@ module RSpecCandy
           #   Every key/value pair in the hash will become a #let variable for the reused example group
           # - You can call it with a block. It will be available to the reused example group as let(:block)
           def it_should_act_like(shared_example_group, environment = {}, &block)
-            if Switcher.rspec_version == :rspec2
-              warn('"it_should_act_like" is deprecated. Consider using "it_should_behave_like".')
-            end
-
             description = "as #{shared_example_group}"
             description << " (#{environment.inspect})" if environment.present?
             describe description do
