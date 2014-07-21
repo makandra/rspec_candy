@@ -7,8 +7,8 @@ task :default => 'all:spec'
 
 namespace :travis_ci do
 
-  desc 'Things to do before Travis CI begins'
-  task :prepare => [:compatible_rubygems]
+  desc 'Run tests with a single command'
+  task :run => [:compatible_rubygems, 'all:bundle', 'all:spec']
 
   desc 'Ensure compatible Rubygems version for Ruby 1.8'
   task :compatible_rubygems do
@@ -46,7 +46,7 @@ end
 def for_each_directory_of(path, &block)
   Dir[path].sort.each do |rakefile|
     directory = File.dirname(rakefile)
-    puts "\e[4;34m# #{ directory }\e[0m" # blue underline
+    puts "\n\n\e[4;34m# #{ directory }\e[0m" # blue underline
 
     if directory.include?('rspec1') and RUBY_VERSION != '1.8.7'
       puts 'Rails 2.3 tests are only run for Ruby 1.8.7'
