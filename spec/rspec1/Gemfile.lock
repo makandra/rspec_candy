@@ -6,7 +6,7 @@ PATH
       sneaky-save
 
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   specs:
     actionmailer (2.3.18)
       actionpack (= 2.3.18)
@@ -18,13 +18,13 @@ GEM
     activeresource (2.3.18)
       activesupport (= 2.3.18)
     activesupport (2.3.18)
-    columnize (0.3.6)
-    debugger (1.6.1)
+    columnize (0.8.9)
+    debugger (1.6.8)
       columnize (>= 0.3.1)
       debugger-linecache (~> 1.2.0)
-      debugger-ruby_core_source (~> 1.2.3)
+      debugger-ruby_core_source (~> 1.3.5)
     debugger-linecache (1.2.0)
-    debugger-ruby_core_source (1.2.3)
+    debugger-ruby_core_source (1.3.5)
     has_defaults (0.4.1)
       activerecord
     hoe (2.8.0)
@@ -39,7 +39,7 @@ GEM
       activeresource (= 2.3.18)
       activesupport (= 2.3.18)
       rake (>= 0.8.3)
-    rake (10.1.0)
+    rake (10.3.2)
     rbx-require-relative (0.0.9)
     rspec (1.3.2)
     rspec-rails (1.3.4)
@@ -52,7 +52,7 @@ GEM
       linecache (>= 0.3)
     sneaky-save (0.0.2)
       activerecord (>= 2.3.2)
-    sqlite3 (1.3.8)
+    sqlite3 (1.3.9)
     state_machine (1.2.0)
     test-unit (1.2.3)
       hoe (>= 1.5.1)
