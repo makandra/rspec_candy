@@ -6,6 +6,8 @@ task :default => :spec
 
 desc "Run all specs for a specific rails version"
 Spec::Rake::SpecTask.new() do |t|
-  t.spec_opts = ['--options', "\"spec.opts\""]
+  # Run a single spec by setting the SPEC environment variable. Example:
+  # $ rake SPEC=../shared/rspec_candy/matchers/include_hash_spec.rb
   t.spec_files = defined?(SPEC) ? SPEC : FileList['**/*_spec.rb', '../shared/**/*_spec.rb']
+  t.spec_opts = ['--options', "\"spec.opts\""]
 end

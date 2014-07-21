@@ -25,8 +25,11 @@ namespace :all do
   task :spec do
     success = true
     for_each_directory_of('spec/**/Rakefile') do |directory|
-      env = "SPEC=../../#{ENV['SPEC']} " if ENV['SPEC']
-      success &= system("cd #{directory} && #{env} bundle exec rake spec")
+
+      # Run a single spec by setting the SPEC environment variable. Example:
+      # $ rake SPEC=matchers/include_hash_spec.rb
+      spec = "SPEC=../shared/rspec_candy/#{ENV['SPEC']}" if ENV['SPEC']
+      success &= system("cd #{directory} && #{spec} bundle exec rake spec")
     end
     fail "Tests failed" unless success
   end

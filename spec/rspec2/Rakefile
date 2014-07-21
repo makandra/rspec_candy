@@ -7,5 +7,8 @@ task :default => :spec
 desc "Run all specs for a specific rails version"
 RSpec::Core::RakeTask.new(:spec) do |t|
   t.verbose = false
+  # Run a single spec by setting the SPEC environment variable. Example:
+  # $ rake SPEC=../shared/rspec_candy/matchers/include_hash_spec.rb
   t.pattern = defined?(SPEC) ? SPEC : ['**/*_spec.rb', '../shared/**/*_spec.rb']
+  t.spec_opts = ['-b']
 end
