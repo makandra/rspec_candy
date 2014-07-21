@@ -137,5 +137,6 @@ DEPENDENCIES
   rspec-rails (~> 2)
   rspec_candy!
   ruby-debug
+  sneaky-save (< 0.0.5)
   sqlite3
   state_machine
