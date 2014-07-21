@@ -5,10 +5,13 @@ gem 'rails', '~>3'
 gem 'has_defaults'
 gem 'rspec', '~>2'
 gem 'rspec-rails', '~>2'
-gem 'ruby-debug', :platforms => :ruby_18
-gem 'debugger', :platforms => :ruby_19
 gem 'rspec_candy', :path => '../..'
 
 group :state_machine do
   gem 'state_machine'
+end
+
+group :development do
+  gem 'ruby-debug', :platforms => :ruby_18
+  gem 'debugger', :platforms => :ruby_19
 end

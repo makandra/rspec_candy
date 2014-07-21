@@ -12,3 +12,4 @@ branches:
   only:
     - master
     - travis-testing
+bundler_args: --without development
