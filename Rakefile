@@ -46,8 +46,13 @@ end
 def for_each_directory_of(path, &block)
   Dir[path].sort.each do |rakefile|
     directory = File.dirname(rakefile)
-    puts '', "\033[44m#{directory}\033[0m", ''
-    block.call(directory)
+    puts "\e[4;34m# #{ directory }\e[0m" # blue underline
+
+    if directory.include?('rspec1') and RUBY_VERSION != '1.8.7'
+      puts 'Rails 2.3 tests are only run for Ruby 1.8.7'
+    else
+      block.call(directory)
+    end
   end
 end
 
