@@ -1,14 +1,14 @@
 language: ruby
 rvm:
-  - "1.8.7"
   - "1.9.3"
-  - ree
-script: rake travis_ci:run
+gemfile:
+  - gemfiles/Gemfile.rspec1-rails2
+  - gemfiles/Gemfile.rspec2-rails3
+  - gemfiles/Gemfile.rspec3-rails4
+script: rake spec
 notifications:
   email:
     - fail@makandra.de
 branches:
   only:
     - master
-    - travis-testing
-bundler_args: --without development
