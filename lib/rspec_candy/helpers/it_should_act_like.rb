@@ -25,9 +25,9 @@ module RSpecCandy
       end
 
       case Switcher.rspec_version
-      when :rspec1
+      when 1
         Spec::Example::ExampleGroupMethods.send(:include, self)
-      when :rspec2
+      else
         RSpec::Core::ExampleGroup.singleton_class.send(:include, self)
       end
     end

@@ -2,13 +2,22 @@ module RSpecCandy
   module Switcher
     extend self
 
+    # def rspec_version
+    #   if defined?(RSpec::Core)
+    #     :rspec2
+    #   elsif defined?(Spec)
+    #     :rspec1
+    #   else
+    #     raise 'Cannot determine RSpec version'
+    #   end
+    # end
+
     def rspec_version
-      if defined?(RSpec::Core)
-        :rspec2
-      elsif defined?(Spec)
-        :rspec1
+      if defined?(Spec)
+        1
       else
-        raise 'Cannot determine RSpec version'
+        require 'rspec/version'
+        RSpec::Version::STRING.to_i
       end
     end
 
@@ -20,8 +29,19 @@ module RSpecCandy
       defined?(ActiveRecord)
     end
 
+    def new_mock(*args)
+      case rspec_version
+      when 1
+        Spec::Mocks::Mock.new(*args)
+      when 2
+        RSpec::Mocks::Mock.new(*args)
+      else
+        RSpec::Mocks::Double.new(*args)
+      end
+    end
+
     def rspec_root
-      if rspec_version == :rspec1
+      if rspec_version == 1
         Spec
       else
         RSpec

@@ -142,19 +142,7 @@ If you only care about the matchers or helpers you can also more specifically re
        it_should_run_callbacks :notify_this, :notify_that
      end
   
-   If you use the state_machine gem, you can also spec callbacks for state_machine transitions:
 
-
-    describe Model, '#my_event from :my_state1 to :my_state" do
-      it_should_run_callbacks :notify_this, :notify_that
-    end
-
-
-  If you have used a custom state machine name, you can use specify it like this:
-
-    describe Model, '#my_event on :my_machine from :my_state1 to :my_state" do
-      it_should_run_callbacks :notify_this, :notify_that
-    end
 
 **it_should_run_callbacks_in_order**
 

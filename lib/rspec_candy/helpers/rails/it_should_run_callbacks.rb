@@ -18,17 +18,14 @@ module RSpecCandy
                 should = ['should run callbacks', callbacks.inspect, ('in order' if options[:ordered]), reason].compact.join ' '
 
                 prose = case Switcher.rspec_version
-                when :rspec1
+                when 1
                   description_parts.last
-                when :rspec2
+                else
                   description.split(/(?=#)/).last
                 end
 
                 send(:it, should) do
                   extend ExampleMethods
-                  if subject.class.respond_to?(:state_machine) and defined?(StateMachine)
-                    extend StateMachineExampleMethods
-                  end
                   callbacks.each do |callback|
                     expectation = subject.should_receive(callback).once
                     expectation.ordered if options[:ordered]
@@ -48,13 +45,13 @@ module RSpecCandy
           end
 
           case Switcher.rspec_version
-          when :rspec1
+          when 1
 
             def run_active_record_callbacks_from_prose(prose)
               subject.run_callbacks(prose.sub(/^#/, ''))
             end
 
-          when :rspec2
+          else
 
             def run_active_record_callbacks_from_prose(prose)
               hook = prose.split.last.sub(/^#/, '')
@@ -82,27 +79,10 @@ module RSpecCandy
           end
         end
 
-        module StateMachineExampleMethods
-          def run_all_callbacks(prose)
-            run_state_machine_callbacks_from_prose(prose) or super
-          end
-
-          def run_state_machine_callbacks_from_prose(prose)
-            if parts = prose.match(/^(#\w+) (?:on ([\:\w]+) )?from ([\:\w]+) to ([\:\w]+)$/)
-              name = parts[1].sub(/^#/, '').to_sym
-              machine_name = parts[2] ? parts[2].sub(/^:/, '').to_sym : :state
-              from = parts[3].sub(/^:/, '').to_sym
-              to = parts[4].sub(/^:/, '').to_sym
-              transition = StateMachine::Transition.new(subject, subject.class.state_machine(machine_name), name, from, to)
-              transition.run_callbacks
-            end
-          end
-        end
-
         case Switcher.rspec_version
-        when :rspec1
+        when 1
           Spec::Example::ExampleGroupMethods.send(:include, self::ExampleGroupMethods)
-        when :rspec2
+        else
           RSpec::Core::ExampleGroup.singleton_class.send(:include, self::ExampleGroupMethods)
         end
 

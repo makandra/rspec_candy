@@ -1,7 +1,7 @@
 require 'database_cleaner'
 DatabaseCleaner.strategy = :deletion
 
-if RSpecCandy::Switcher.rspec_version == :rspec1
+if RSpecCandy::Switcher.rspec_version == 1
 
   Spec::Runner.configure do |config|
     config.append_before do

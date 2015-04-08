@@ -4,7 +4,7 @@ module RSpecCandy
 
       def stub_any_instance(stubs)
         case Switcher.rspec_version
-        when :rspec1
+        when 1
           unstubbed_new = method(:new)
           stub(:new).and_return do |*args|
             unstubbed_new.call(*args).tap do |obj|
@@ -12,7 +12,7 @@ module RSpecCandy
             end
           end
           stubs
-        when :rspec2
+        else
           any_instance.stub(stubs)
         end
       end

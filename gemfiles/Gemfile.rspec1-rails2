@@ -8,7 +8,6 @@ source 'https://rubygems.org'
 gem 'activerecord', '~>2.3.18'
 gem 'rspec', '~>1.3.2'
 gem 'sqlite3'
-gem 'state_machine'
 gem 'database_cleaner'
 gem 'rake'
 

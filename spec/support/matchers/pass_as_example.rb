@@ -15,6 +15,7 @@ RSpecCandy::Switcher.define_matcher :pass_as_example do
 
   match do |example|
     rspec_out = RSpecRemote.run_example(example)
+    # puts rspec_out
     rspec_out.include?('0 failures')
   end
 
@@ -24,6 +25,7 @@ RSpecCandy::Switcher.define_matcher :fail_as_example do
 
   match do |example|
     rspec_out = RSpecRemote.run_example(example)
+    # puts rspec_out
     rspec_out.include?('1 failure')
   end
 

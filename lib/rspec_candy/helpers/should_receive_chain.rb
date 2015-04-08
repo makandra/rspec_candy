@@ -19,7 +19,7 @@ module RSpecCandy
             expectation = options[:negate] ? :should_not_receive : :should_receive
             obj = add_expectation_chain_link(obj, expectation, part)
           else
-            next_obj = double('chain link')
+            next_obj = Switcher.new_mock('chain link')
             add_expectation_chain_link(obj, :stub, part).and_return(next_obj)
             obj = next_obj
           end

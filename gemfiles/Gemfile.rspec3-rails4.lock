@@ -1,7 +1,7 @@
 PATH
   remote: ..
   specs:
-    rspec_candy (0.3.1)
+    rspec_candy (0.4.0)
       rspec
       sneaky-save
 
@@ -45,7 +45,6 @@ GEM
     sneaky-save (0.1.0)
       activerecord (>= 3.2.0)
     sqlite3 (1.3.10)
-    state_machine (1.2.0)
     thread_safe (0.3.5)
     tzinfo (1.2.2)
       thread_safe (~> 0.1)
@@ -60,4 +59,3 @@ DEPENDENCIES
   rspec (~> 3.2.0)
   rspec_candy!
   sqlite3
-  state_machine
