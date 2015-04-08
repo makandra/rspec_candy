@@ -8,7 +8,7 @@ require 'rspec_candy/helpers/should_receive_chain'
 require 'rspec_candy/helpers/stub_any_instance'
 require 'rspec_candy/helpers/stub_existing'
 
-if RSpecCandy::Switcher.rails_loaded?
+if RSpecCandy::Switcher.active_record_loaded?
   require 'rspec_candy/helpers/rails/store_with_values'
   require 'rspec_candy/helpers/rails/it_should_run_callbacks'
   require 'rspec_candy/helpers/rails/prevent_storage'

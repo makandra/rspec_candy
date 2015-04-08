@@ -5,12 +5,17 @@ module RSpecCandy
 
         def store_with_values(values = {})
           record = new
-          if Switcher.rails_version == :rails2
+          case Switcher.active_record_version
+          when 2
             record.send(:attributes=, values, false)
             record.send(:create_without_callbacks)
-          else
+          when 3
             require 'sneaky-save'
             record.assign_attributes(values, :without_protection => true)
+            record.sneaky_save
+          else
+            require 'sneaky-save'
+            record.assign_attributes(values)
             record.sneaky_save
           end
           record

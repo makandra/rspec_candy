@@ -1,0 +1,10 @@
+source 'https://rubygems.org'
+
+gem 'activerecord', '~>4.2.0'
+gem 'rspec', '~>3.2.0'
+gem 'sqlite3'
+gem 'state_machine'
+gem 'database_cleaner'
+gem 'rake'
+
+gem 'rspec_candy', :path => '..'

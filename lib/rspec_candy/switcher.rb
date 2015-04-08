@@ -12,20 +12,12 @@ module RSpecCandy
       end
     end
 
-    def rails_version
-      if Rails.version.to_i < 3
-        :rails2
-      else
-        :rails3
-      end
+    def active_record_version
+      ActiveRecord::VERSION::MAJOR
     end
 
-    def rails_loaded?
-      defined?(Rails)
-    end
-
-    def new_mock(*args)
-      rspec_root.const_get(:Mocks).const_get(:Mock).new(*args)
+    def active_record_loaded?
+      defined?(ActiveRecord)
     end
 
     def rspec_root

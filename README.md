@@ -3,7 +3,11 @@ rspec_candy [![Build Status](https://secure.travis-ci.org/makandra/rspec_candy.p
 
 A collection of nifty helpers and matchers for your RSpec suite.
 
-Will work for RSpec1 and Rails 2, or RSpec2 and Rails 3, or no Rails at all.
+Tested on:
+
+- RSpec 1 / Rails 2.3
+- RSpec 2 / Rails 3.2
+- RSpec 3 / Rails 4.2
 
 
 ##Installation
