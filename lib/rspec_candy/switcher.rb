@@ -2,22 +2,16 @@ module RSpecCandy
   module Switcher
     extend self
 
-    # def rspec_version
-    #   if defined?(RSpec::Core)
-    #     :rspec2
-    #   elsif defined?(Spec)
-    #     :rspec1
-    #   else
-    #     raise 'Cannot determine RSpec version'
-    #   end
-    # end
-
     def rspec_version
-      if defined?(Spec)
-        1
-      else
+      begin
         require 'rspec/version'
         RSpec::Version::STRING.to_i
+      rescue LoadError
+        if defined?(Spec)
+          1
+        else
+          raise 'Cannot determine RSpec version'
+        end
       end
     end
 
