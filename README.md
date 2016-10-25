@@ -74,7 +74,7 @@ Time.parse('2012-12-01 14:00:00.5').should == Time.parse('2012-12-01 14:00')
 
   Expects multiple returns at once:
 
-```
+```ruby
 dog.should_receive_and_return(:bark => "Woof", :fetch => "stick")
 ```
 
