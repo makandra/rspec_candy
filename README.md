@@ -10,7 +10,7 @@ Tested on:
 - RSpec 3 / Rails 4.2
 
 
-##Installation
+## Installation
 
 Add `rspec_candy` to your Gemfile.
 
@@ -27,7 +27,7 @@ require 'rspec_candy/matchers'
 require 'rspec_candy/helpers'
 ```
 
-##Matchers provided
+## Matchers provided
 
 **be_same_number_as**
 
@@ -60,7 +60,7 @@ Time.parse('2012-12-01 14:00:00.5').should == Time.parse('2012-12-01 14:00')
 { :foo => 'a', :bar => 'b' }.should include_hash(:foo => 'a', :baz => 'c') # fails
 ```
 
-##Helpers provided
+## Helpers provided
 
 
 ### Extensions to **Object**
