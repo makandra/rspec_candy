@@ -147,24 +147,6 @@ end
   Blocks are passed as a let named "block".
 
 
-**it_should_run_callbacks**
-
-   Only on Rails.
-
-   Check if callbacks are run. Note the name of the describe block is significant:
-
-```ruby
- describe Model, '#after_save' do
-   it_should_run_callbacks :notify_this, :notify_that
- end
-```
-
-
-**it_should_run_callbacks_in_order**
-
-  Like `it_should_run_callbacks`, but also checks the correct order.
-
-
 
 ### Extensions to **ActiveRecord::Base**
 

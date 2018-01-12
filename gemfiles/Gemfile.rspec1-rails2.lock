@@ -28,3 +28,6 @@ DEPENDENCIES
   rspec (~> 1.3.2)
   rspec_candy!
   sqlite3
+
+BUNDLED WITH
+   1.12.5
