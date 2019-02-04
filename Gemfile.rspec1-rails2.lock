@@ -1,7 +1,7 @@
 PATH
-  remote: ..
+  remote: .
   specs:
-    rspec_candy (0.5.0)
+    rspec_candy (0.5.1)
       rspec
       sneaky-save
 

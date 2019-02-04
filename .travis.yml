@@ -2,9 +2,9 @@ language: ruby
 rvm:
   - "1.9.3"
 gemfile:
-  - gemfiles/Gemfile.rspec1-rails2
-  - gemfiles/Gemfile.rspec2-rails3
-  - gemfiles/Gemfile.rspec3-rails4
+  - Gemfile.rspec1-rails2
+  - Gemfile.rspec2-rails3
+  - Gemfile.rspec3-rails4
 before_install:
   - gem update --system 2.4.3 # newer versions dont like bunlder 1.7.6
   - gem --version
